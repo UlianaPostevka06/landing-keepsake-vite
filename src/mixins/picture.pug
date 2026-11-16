@@ -1,0 +1,10 @@
+mixin picture(opts)
+  - const o = Object.assign({ width: 800, height: 632, sizes: '100vw', lazy: true }, opts)
+  - const base = `/src/assets/images/${o.name}`
+  picture
+    source(type='image/avif' srcset=`${base}-400.avif 400w, ${base}-800.avif 800w` sizes=o.sizes)
+    source(type='image/webp' srcset=`${base}-400.webp 400w, ${base}-800.webp 800w` sizes=o.sizes)
+    if o.lazy
+      img(src=`${base}-800.jpg` alt=o.alt width=o.width height=o.height loading='lazy' decoding='async')&attributes(attributes)
+    else
+      img(src=`${base}-800.jpg` alt=o.alt width=o.width height=o.height fetchpriority='high' decoding='async')&attributes(attributes)

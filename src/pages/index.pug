@@ -1,19 +1,35 @@
 extends ../layouts/main
 
-block fonts
-    include ../includes/fonts
-
 append meta
-    include ../includes/meta
+  meta(name='description' content='Keepsake is a digital and branding agency based in London.')
+  meta(property='og:title' content='Keepsake — digital & branding agency')
+  meta(property='og:type' content='website')
 
-block data
-    include ../data/data
+block title
+  | Keepsake — digital &amp; branding agency
 
-block header
-    include ../components/header
+prepend styles
+  //- preload шрифту до основних стилів
+  link(rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap')
 
 block content
-    include ../components/content
+  include ../data/nav
+  include ../data/socials
+  include ../data/filters
+  include ../data/works
+  include ../data/services
+  include ../data/stats
+  include ../data/journal
+  include ../data/footer
 
-block footer
-    include ../components/footer
+  include ../components/header
+  main
+    include ../components/sections/hero
+    include ../components/sections/works
+    include ../components/sections/cta
+    include ../components/sections/services
+    include ../components/sections/clients
+    include ../components/sections/journal
+  include ../components/footer
+  a.to-top(href='#top' aria-label='Back to top')
+    +icon('arrow-up')

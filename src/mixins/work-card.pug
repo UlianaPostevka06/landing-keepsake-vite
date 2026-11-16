@@ -1,0 +1,9 @@
+mixin work-card(work)
+  article.work-card
+    a.work-card__link(href='#')
+      +picture({ name: work.image, alt: work.alt, sizes: '(min-width: 1280px) 357px, (min-width: 768px) 50vw, 100vw' })(class='work-card__img')
+      .work-card__overlay
+        span.work-card__plus(aria-hidden='true')= '+'
+        h3.work-card__title= work.title
+        span.work-card__line(aria-hidden='true')
+        span.work-card__cat= work.category

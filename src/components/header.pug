@@ -1,4 +1,27 @@
 header.header
-    .header-inner
-        include logo
-        include navigation
+  .container.header__inner
+    a.logo(href='#top' aria-label='Keepsake, home')
+      span.logo__circle K
+      span.logo__text eepsake
+    input#menu-toggle.menu-toggle.sr-only(type='checkbox' aria-controls='main-nav' aria-label='Toggle menu')
+    label.burger(for='menu-toggle' aria-hidden='true')
+      +icon('menu')(class='burger__open')
+      +icon('close')(class='burger__close')
+    nav#main-nav.nav(aria-label='Main')
+      ul.nav__list
+        each item in nav
+          li
+            a.nav__link(class={ 'nav__link--active': item.active } href=item.href)= item.label
+      a.fav-btn(href='#' aria-label='Favourites')
+        +icon('heart')
+      .nav__mobile
+        +btn('Contact us', '#contact')
+        +btn('Favourites', '#', 'secondary')
+        .nav__contacts
+          p.nav__label Say hello
+          a(href='mailto:hello@keepsake.studio') hello@keepsake.studio
+          a(href='tel:+442079460000') +44 20 7946 0000
+          ul.socials
+            each s in socials
+              li
+                a.socials__link(class=`socials__link--${s.id}` href='#' aria-label=s.label)= s.text
