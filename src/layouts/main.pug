@@ -1,17 +1,27 @@
-include ../mixins/index
+include ../data/nav
+include ../data/works
+include ../data/content
+include ../mixins/btn
+include ../mixins/icon
+include ../mixins/picture
+include ../mixins/work-card
+include ../mixins/section-title
 
 doctype html
-html(lang='en')
+html(lang='uk')
   head
     block meta
       meta(charset='UTF-8')
-      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(name='viewport' content='width=device-width, initial-scale=1')
     title
       block title
         | Keepsake
-    include ../includes/fonts
     block styles
       link(rel='stylesheet' href='/src/styles/main.scss')
-  body#top
-    block content
+  body
+    a.skip-link(href='#main') Перейти до вмісту
+    include ../components/header
+    main#main
+      block content
+    include ../components/footer
     block scripts

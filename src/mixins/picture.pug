@@ -1,10 +1,8 @@
-mixin picture(opts)
-  - const o = Object.assign({ width: 800, height: 632, sizes: '100vw', lazy: true }, opts)
-  - const base = `/src/assets/images/${o.name}`
+mixin picture(name, alt, w, h, opts = {})
+  - const base = `/src/assets/images/${name}`
+  - const sizes = opts.sizes || '(min-width: 1280px) 357px, (min-width: 768px) 50vw, 100vw'
+  - const eager = opts.eager
   picture
-    source(type='image/avif' srcset=`${base}-400.avif 400w, ${base}-800.avif 800w` sizes=o.sizes)
-    source(type='image/webp' srcset=`${base}-400.webp 400w, ${base}-800.webp 800w` sizes=o.sizes)
-    if o.lazy
-      img(src=`${base}-800.jpg` alt=o.alt width=o.width height=o.height loading='lazy' decoding='async')&attributes(attributes)
-    else
-      img(src=`${base}-800.jpg` alt=o.alt width=o.width height=o.height fetchpriority='high' decoding='async')&attributes(attributes)
+    each fmt in ['avif', 'webp']
+      source(type=`image/${fmt}` srcset=`${base}-400.${fmt} 400w, ${base}-800.${fmt} 800w` sizes=sizes)
+    img(src=`${base}-800.jpg` alt=alt width=w height=h decoding='async' loading=(eager ? false : 'lazy') fetchpriority=(eager ? 'high' : false))&attributes(attributes)

@@ -1,0 +1,13 @@
+section#journal.journal(aria-labelledby='journal-title')
+  .container
+    +section-title('journal-title') Journal
+    ul.journal__list
+      each post in posts
+        li.journal__item
+          +picture(post.image, post.alt, post.w, post.h)
+          time.journal__date(datetime=post.date)= post.date
+          h3.journal__title= post.title
+          unless post.excerpt
+            p.journal__excerpt Читати далі…
+          if post.excerpt
+            p.journal__excerpt= post.excerpt

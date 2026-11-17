@@ -1,10 +1,10 @@
 mixin btn(label, href = '#', variant = 'primary')
+  - let mod = 'btn--primary'
   case variant
-    when 'secondary'
-      - var mod = 'btn--secondary'
+    when 'ghost'
+      - mod = 'btn--ghost'
+    when 'light'
+      - mod = 'btn--light'
     default
-      - var mod = 'btn--primary'
-  a.btn(class=mod href=href)&attributes(attributes)
-    if block
-      block
-    = label
+      - mod = 'btn--primary'
+  a.btn(href=href class=mod)&attributes(attributes)= label

@@ -1,0 +1,9 @@
+section#services.services(aria-labelledby='services-title')
+  .container
+    +section-title('services-title') Services
+    ul.services__list
+      each service, i in services
+        li.services__item
+          span.services__num= `0${i + 1}`
+          h3.services__title= service.title
+          p= service.text

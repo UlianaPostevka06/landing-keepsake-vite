@@ -1,5 +1,13 @@
-footer.footer
-    .footer-outer
-        .footer-inner
-            include logo
-            h4 Приєднуйся і живи зі мною у світі солодощів!
+footer#contact.footer
+  .container.footer__inner
+    each col, i in footerColumns
+      div.footer__col
+        h2.footer__title= col.title
+        ul.footer__list
+          each link in col.links
+            li: a.footer__link(href=link.href)= link.title
+    ul.footer__socials
+      each s in socials
+        li: a.footer__social(href=s.href aria-label=s.label)
+          +icon(s.name)
+  p.footer__copy © #{new Date().getFullYear()} Keepsake
