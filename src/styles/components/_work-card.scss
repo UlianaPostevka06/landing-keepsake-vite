@@ -1,0 +1,20 @@
+.work-card {
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  &__body {
+    padding-block: var(--space-xs);
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__category {
+    margin: 0;
+    color: var(--color-muted);
+    text-transform: capitalize;
+  }
+}

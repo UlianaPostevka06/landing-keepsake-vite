@@ -1,13 +1,53 @@
 footer#contact.footer
-  .container.footer__inner
-    each col, i in footerColumns
-      div.footer__col
-        h2.footer__title= col.title
-        ul.footer__list
-          each link in col.links
-            li: a.footer__link(href=link.href)= link.title
-    ul.footer__socials
-      each s in socials
-        li: a.footer__social(href=s.href aria-label=s.label)
-          +icon(s.name)
-  p.footer__copy © #{new Date().getFullYear()} Keepsake
+  .container
+    .footer__top
+      .footer__links
+        each col in footerCols
+          nav.footer__col(aria-labelledby=col.id)
+            h2.footer__title(id=col.id)= col.title
+            ul
+              each link in col.links
+                li
+                  a(href=link.href)= link.title
+
+      section.newsletter(aria-labelledby='nl-title')
+        h2#nl-title.footer__title Newsletter
+        p.newsletter__text Fresh case studies and design notes, once a month.
+        form.newsletter__form(action='#subscribed', method='get')
+          .newsletter__row
+            label.sr-only(for='nl-email') Your email address
+            input#nl-email.newsletter__input(
+              type='email',
+              name='email',
+              placeholder='Your email address',
+              required,
+              aria-describedby='nl-error'
+            )
+            button.btn.btn--primary.newsletter__btn(type='submit') Subscribe
+          p#nl-error.newsletter__error Please enter a valid email address.
+          label.newsletter__agree
+            input(type='checkbox', name='agree', required)
+            span I agree to the privacy policy
+        #subscribed.newsletter__success(role='status')
+          p.newsletter__ok
+            svg(
+              width='18',
+              height='18',
+              viewBox='0 0 18 18',
+              aria-hidden='true',
+              focusable='false'
+            )
+              circle(cx='9', cy='9', r='9', fill='currentColor')
+              path(d='M5 9.5l3 3 5-6', fill='none', stroke='#2A2A2D', stroke-width='2')
+            | You're in! Check your inbox to confirm.
+          p.newsletter__note One email a month. No spam, unsubscribe anytime.
+
+    .footer__bottom
+      p.footer__copy © 2026 Keepsake. All rights reserved.
+      ul.socials
+        each s in socials
+          li
+            a.socials__link(class=`socials__link--${s.mod}`, href=s.href, aria-label=s.label)= s.text
+
+a.to-top(href='#top', aria-label='Back to top')
+  +icon('arrow-up', 14, 14)

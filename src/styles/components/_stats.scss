@@ -1,0 +1,25 @@
+@use '../abstracts' as *;
+
+.stats {
+  padding-block: var(--space-lg);
+  color: var(--color-bg-light);
+  background: var(--color-dark);
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: var(--space-md);
+  }
+
+  &__item {
+    text-align: center;
+  }
+
+  &__value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: rem(48);
+    color: var(--color-accent);
+  }
+}

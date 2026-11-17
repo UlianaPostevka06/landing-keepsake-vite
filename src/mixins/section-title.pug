@@ -1,3 +1,2 @@
-mixin section-title(id)
-  h2.section-title(id=id)
-    block
+mixin section-title(text, id = '')
+  h2.section-title(id=id || false)= text

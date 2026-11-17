@@ -1,13 +1,15 @@
-section#journal.journal(aria-labelledby='journal-title')
+section#journal.section.journal(aria-labelledby='journal-title')
   .container
-    +section-title('journal-title') Journal
-    ul.journal__list
+    +section-title('From the journal', 'journal-title')
+    p.section-lead Notes on process, case studies and things that inspire us.
+    .journal__list
       each post in posts
-        li.journal__item
-          +picture(post.image, post.alt, post.w, post.h)
-          time.journal__date(datetime=post.date)= post.date
-          h3.journal__title= post.title
-          unless post.excerpt
-            p.journal__excerpt Читати далі…
-          if post.excerpt
-            p.journal__excerpt= post.excerpt
+        article.post
+          +picture(post.image, '', 150, 150, 'post__img')
+          .post__body
+            p.post__meta
+              time(datetime=post.date)= post.dateText
+              = ` / ${post.cat}`
+            h3.post__title= post.title
+            p.post__text= post.text
+            a.post__more(href='#') Read more

@@ -1,0 +1,59 @@
+@use '../abstracts' as *;
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $socials {
+    --social-#{$name}: #{$value};
+  }
+
+  --font-heading: #{$font-heading};
+  --font-body: #{$font-body};
+  --font-logo: #{$font-logo};
+  --fs-h1: #{rem(26)};
+  --fs-cta: #{rem(22)};
+  --fs-h2: #{rem(18)};
+  --fs-nav: #{rem(12)};
+  --fs-body: #{rem(14)};
+  --fs-quote: #{rem(16)};
+  --fs-stat: #{rem(38)};
+  --fs-logo: #{rem(22)};
+  --logo-circle: 34px;
+  --service-icon: 72px;
+  --journal-preview: 96px;
+  --header-h: 64px;
+  --card-ratio: 1 / 0.72;
+  --section-gap: 56px;
+  --container-padding: 20px;
+  --container-max: 1100px;
+  --grid-gap: 12px;
+  --nav-gap: 24px;
+
+  @include mq('tablet') {
+    --fs-h1: #{rem(32)};
+    --fs-cta: #{rem(24)};
+    --fs-nav: #{rem(13)};
+    --fs-quote: #{rem(19)};
+    --fs-stat: #{rem(40)};
+    --fs-logo: #{rem(26)};
+    --logo-circle: 40px;
+    --service-icon: 96px;
+    --journal-preview: 150px;
+    --card-ratio: 1 / 0.79;
+    --section-gap: 72px;
+    --container-padding: 40px;
+  }
+
+  @include mq('desktop') {
+    --fs-h1: #{rem(40)};
+    --fs-cta: #{rem(28)};
+    --fs-quote: #{rem(22)};
+    --fs-stat: #{rem(48)};
+    --section-gap: 90px;
+    --container-padding: 90px;
+    --grid-gap: 14px;
+    --nav-gap: 32px;
+  }
+}

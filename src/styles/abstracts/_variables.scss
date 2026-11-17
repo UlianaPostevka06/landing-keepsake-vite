@@ -1,0 +1,28 @@
+$colors: (
+  'accent': #f95858,
+  'accent-hover': #e44646,
+  'teal': #2cd5c4,
+  'text-dark': #3a3a3c,
+  'text': #666a6e,
+  'muted': #9aa0a6,
+  'bg-light': #f0f3f4,
+  'border': #e1e5e8,
+  'footer': #2a2a2d,
+  'overlay': rgb(30 32 36 / 82%),
+  'teal-bg': rgb(44 213 196 / 15%),
+  'white': #fff,
+);
+$socials: (
+  'rss': #f5a33b,
+  'fb': #3b5998,
+  'tw': #1da1f2,
+  'dr': #ea4c89,
+  'p': #e0443e,
+);
+$breakpoints: (
+  'tablet': 768px,
+  'desktop': 1280px,
+);
+$font-heading: 'Oswald', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+$font-logo: 'Dancing Script', cursive;

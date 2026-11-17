@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.hero {
+  padding-top: calc(var(--header-h) + var(--section-gap));
+  padding-bottom: var(--section-gap);
+  background-color: var(--color-bg-light);
+
+  &__text {
+    margin-top: 12px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+
+    @include mq('tablet') {
+      flex-direction: row;
+    }
+  }
+}

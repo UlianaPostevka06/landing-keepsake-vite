@@ -1,13 +1,17 @@
-section#works.works(aria-labelledby='works-title')
+section#works.section.works(aria-labelledby='works-title')
   .container
-    +section-title('works-title') Selected works
-    .works__body
-      each cat, i in categories
-        input.works__radio.visually-hidden(type='radio' name='filter' id=`filter-${cat.id}` value=cat.id checked=(i === 0))
-      .works__chips
+    each cat in categories
+      input.filter__input.sr-only(type='radio', name='filter', id=cat.id, checked=cat.checked || false)
+
+    .works__head
+      +section-title('Our awesome works', 'works-title')
+      .chips(role='group', aria-label='Filter works')
         each cat in categories
-          label.chip(for=`filter-${cat.id}` data-filter=cat.id)= cat.title
-      ul.works-grid
-        each work, i in works
-          li.works-grid__item(data-category=work.category)
-            +work-card(work)
+          label.chip(for=cat.id)= cat.title
+
+    ul.works__grid
+      each item in works
+        +work-card(item)
+
+    .works__more
+      +btn('Load more works', '#', 'secondary')

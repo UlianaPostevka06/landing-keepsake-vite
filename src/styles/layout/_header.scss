@@ -1,0 +1,181 @@
+@use '../abstracts' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__circle {
+    @include flex-center;
+
+    width: var(--logo-circle);
+    height: var(--logo-circle);
+    border-radius: 50%;
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: var(--fs-logo);
+  }
+
+  &__text {
+    margin-left: 2px;
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: var(--fs-logo);
+    color: var(--color-text-dark);
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-h);
+
+    @include mq('tablet') {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.burger {
+  @include flex-center;
+
+  width: 40px;
+  height: 40px;
+  color: var(--color-text-dark);
+  cursor: pointer;
+
+  @include mq('tablet') {
+    display: none;
+  }
+
+  &__close {
+    display: none;
+  }
+}
+
+.menu-toggle {
+  &:checked + .burger .burger__open {
+    display: none;
+  }
+
+  &:checked + .burger .burger__close {
+    display: block;
+  }
+
+  &:focus-visible + .burger {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  &:checked ~ .nav {
+    display: block;
+  }
+}
+
+.nav {
+  display: none;
+  flex-basis: 100%;
+  max-height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+
+  @include mq('tablet') {
+    display: flex;
+    flex-basis: auto;
+    align-items: center;
+    gap: var(--nav-gap);
+    max-height: none;
+    overflow: visible;
+  }
+
+  &__list {
+    @include mq('tablet') {
+      display: flex;
+      gap: var(--nav-gap);
+    }
+
+    li + li {
+      border-top: 1px solid var(--color-border);
+
+      @include mq('tablet') {
+        border-top: 0;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 16px 0;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+
+    @include mq('tablet') {
+      padding: 0;
+      font-size: var(--fs-nav);
+    }
+
+    &:hover,
+    &--active {
+      color: var(--color-accent);
+    }
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+
+    @include mq('tablet') {
+      display: none;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-inline: calc(-1 * var(--container-padding));
+    padding: 16px var(--container-padding);
+    background-color: var(--color-bg-light);
+  }
+
+  &__label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+}
+
+.fav-btn {
+  display: none;
+
+  @include mq('tablet') {
+    @include flex-center;
+
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+}

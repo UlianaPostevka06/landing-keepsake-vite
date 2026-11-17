@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.section-title {
+  font-size: rem(28);
+
+  &::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 3px;
+    margin-top: 0.5rem;
+    background: var(--color-accent);
+  }
+
+  &--light {
+    color: var(--color-bg-light);
+  }
+
+  @include mq(lg) {
+    font-size: rem(40);
+  }
+}

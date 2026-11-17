@@ -1,27 +1,31 @@
-include ../data/nav
-include ../data/works
-include ../data/content
+include ../data/site
 include ../mixins/btn
-include ../mixins/icon
+include ../mixins/section-title
 include ../mixins/picture
 include ../mixins/work-card
-include ../mixins/section-title
+include ../mixins/icon
 
 doctype html
-html(lang='uk')
+html(lang='en')
   head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     block meta
-      meta(charset='UTF-8')
-      meta(name='viewport' content='width=device-width, initial-scale=1')
     title
       block title
         | Keepsake
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+    link(
+      href='https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;400;700&display=swap',
+      rel='stylesheet'
+    )
+    link(rel='stylesheet', href='/src/styles/main.scss')
     block styles
-      link(rel='stylesheet' href='/src/styles/main.scss')
-  body
-    a.skip-link(href='#main') Перейти до вмісту
+  body#top
+    include ../includes/sprite
     include ../components/header
-    main#main
+    main
       block content
     include ../components/footer
     block scripts

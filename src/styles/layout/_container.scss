@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--container-padding));
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-top: var(--section-gap);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::after {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+}
+
+.section-lead {
+  margin-top: 12px;
+  font-size: 13px;
+}

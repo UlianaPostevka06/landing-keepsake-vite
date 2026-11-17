@@ -1,9 +1,20 @@
-section#services.services(aria-labelledby='services-title')
+section#about.section.services(aria-labelledby='services-title')
   .container
-    +section-title('services-title') Services
+    +section-title('What do we do', 'services-title')
+    p.section-lead We are a small team of designers and makers who help brands look their best online and offline.
     ul.services__list
-      each service, i in services
-        li.services__item
-          span.services__num= `0${i + 1}`
-          h3.services__title= service.title
-          p= service.text
+      each s in services
+        li.service
+          span.service__icon(aria-hidden='true')
+            if s.icon === 'heart'
+              +icon('heart', 32, 28)(style='color: #f95858')
+            else
+              +icon(s.icon, 36, 30)
+          h3.service__title= s.title
+          p.service__text= s.text
+
+    ul.stats
+      each st in stats
+        li.stat
+          span.stat__num= st.num
+          span.stat__label= st.label

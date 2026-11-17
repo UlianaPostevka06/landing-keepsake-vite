@@ -1,0 +1,136 @@
+@use '../abstracts' as *;
+
+.clients__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.client {
+  flex: 1 1 50%;
+  padding: 14px 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-muted);
+
+  @include mq('tablet') {
+    flex-basis: 33.333%;
+  }
+
+  @include mq('desktop') {
+    flex-basis: 16.666%;
+  }
+
+  &--nordly {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &--halcyon {
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+
+  &--arco {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  &--pinewood {
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+
+  &--vela {
+    font-family: var(--font-heading);
+    letter-spacing: 2px;
+  }
+
+  &--ostra {
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+}
+
+.review {
+  margin-top: 24px;
+  padding: 24px 20px;
+  background-color: var(--color-bg-light);
+
+  @include mq('tablet') {
+    padding: 32px;
+  }
+
+  &__mark {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+
+  &__text {
+    margin-top: 8px;
+    font-size: var(--fs-quote);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  &__avatar {
+    @include flex-center;
+
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-teal);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    color: var(--color-white);
+  }
+
+  &__who {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+  }
+
+  &__role {
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--color-muted);
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 2px;
+    background-color: var(--color-border);
+
+    &--active {
+      background-color: var(--color-accent);
+    }
+  }
+}

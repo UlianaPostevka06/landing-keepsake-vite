@@ -1,8 +1,13 @@
-mixin picture(name, alt, w, h, opts = {})
-  - const base = `/src/assets/images/${name}`
-  - const sizes = opts.sizes || '(min-width: 1280px) 357px, (min-width: 768px) 50vw, 100vw'
-  - const eager = opts.eager
+mixin picture(name, alt = '', width = 400, height = 316, cls = '')
   picture
-    each fmt in ['avif', 'webp']
-      source(type=`image/${fmt}` srcset=`${base}-400.${fmt} 400w, ${base}-800.${fmt} 800w` sizes=sizes)
-    img(src=`${base}-800.jpg` alt=alt width=w height=h decoding='async' loading=(eager ? false : 'lazy') fetchpriority=(eager ? 'high' : false))&attributes(attributes)
+    source(srcset=`/images/${name}@1x.avif 1x, /images/${name}@2x.avif 2x`, type='image/avif')
+    source(srcset=`/images/${name}@1x.webp 1x, /images/${name}@2x.webp 2x`, type='image/webp')
+    img(
+      class=cls || false,
+      src=`/images/${name}@1x.jpg`,
+      srcset=`/images/${name}@2x.jpg 2x`,
+      width=width,
+      height=height,
+      alt=alt,
+      loading='lazy'
+    )

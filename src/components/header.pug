@@ -1,8 +1,52 @@
 header.header
   .container.header__inner
-    a.header__logo(href='#') Keepsake
-    nav.nav(aria-label='Головна навігація')
+    a.logo(href='#top', aria-label='Keepsake, home')
+      span.logo__circle K
+      span.logo__text eepsake
+
+    input#menu-toggle.menu-toggle.sr-only(
+      type='checkbox',
+      aria-controls='main-nav',
+      aria-label='Toggle menu'
+    )
+    label.burger(for='menu-toggle')
+      svg.burger__open(
+        width='20',
+        height='14',
+        viewBox='0 0 20 14',
+        fill='none',
+        stroke='currentColor',
+        stroke-width='2',
+        focusable='false'
+      )
+        path(d='M0 1h20M0 7h20M0 13h20')
+      svg.burger__close(
+        width='16',
+        height='16',
+        viewBox='0 0 16 16',
+        fill='none',
+        stroke='currentColor',
+        stroke-width='2',
+        focusable='false'
+      )
+        path(d='M1 1l14 14M15 1L1 15')
+
+    nav#main-nav.nav(aria-label='Main')
       ul.nav__list
-        each item, i in navItems
-          li.nav__item
-            a.nav__link(href=item.href class={ 'nav__link--active': item.active } aria-current=(item.active ? 'true' : false))= item.title
+        each item in navItems
+          li
+            a.nav__link(class=item.active ? 'nav__link--active' : false, href=item.href)= item.title
+      a.fav-btn(href='#', aria-label='Favourites')
+        +icon('heart', 14, 14)
+
+      .nav__mobile
+        +btn('Contact us', '#contact', 'primary')
+        +btn('Favourites', '#', 'secondary')
+        .nav__contacts
+          p.nav__label Say hello
+          a(href='mailto:hello@keepsake.studio') hello@keepsake.studio
+          a(href='tel:+442079460000') +44 20 7946 0000
+          ul.socials
+            each s in socials
+              li
+                a.socials__link(class=`socials__link--${s.mod}`, href=s.href, aria-label=s.label)= s.text

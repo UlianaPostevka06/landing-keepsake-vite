@@ -1,10 +1,4 @@
-mixin btn(label, href = '#', variant = 'primary')
-  - let mod = 'btn--primary'
-  case variant
-    when 'ghost'
-      - mod = 'btn--ghost'
-    when 'light'
-      - mod = 'btn--light'
-    default
-      - mod = 'btn--primary'
-  a.btn(href=href class=mod)&attributes(attributes)= label
+mixin btn(text, href = '#', variant = 'primary', extraClass = '')
+  a(class=`btn btn--${variant} ${extraClass}`.trim(), href=href)&attributes(attributes)
+    block
+    = text

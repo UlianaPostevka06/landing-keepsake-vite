@@ -1,0 +1,60 @@
+@use '../abstracts' as *;
+
+.journal__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  margin-top: 24px;
+
+  @include mq('desktop') {
+    gap: 32px 60px;
+  }
+}
+
+.post {
+  display: flex;
+  flex: 1 1 100%;
+  gap: 16px;
+
+  @include mq('desktop') {
+    flex-basis: calc(50% - 30px);
+  }
+
+  &__img {
+    flex-shrink: 0;
+    width: var(--journal-preview);
+    height: var(--journal-preview);
+    object-fit: cover;
+    background-color: var(--color-bg-light);
+  }
+
+  &__meta {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  &__title {
+    margin-top: 6px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  &__text {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  &__more {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+}

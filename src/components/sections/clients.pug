@@ -1,0 +1,21 @@
+section.section.clients(aria-labelledby='clients-title')
+  .container
+    +section-title('Clients & kind words', 'clients-title')
+    p.section-lead Some of the teams that trusted us with their brands.
+    ul.clients__list
+      each c in clients
+        li.client(class=`client--${c.mod}`)= c.name
+
+    figure.review
+      span.review__mark(aria-hidden='true') &ldquo;
+      blockquote.review__text
+        p Keepsake turned a vague brief into a brand we are proud of. The team was fast, honest about trade-offs and obsessed with the details.
+      figcaption.review__author
+        span.review__avatar(aria-hidden='true') OM
+        span.review__who
+          span.review__name Olena Marchenko
+          span.review__role Marketing Lead, Nordly
+        span.review__dots(aria-hidden='true')
+          span.review__dot.review__dot--active
+          span.review__dot
+          span.review__dot
