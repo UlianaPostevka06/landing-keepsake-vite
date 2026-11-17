@@ -10,7 +10,9 @@
     "images": "node scripts/optimize-images.mjs",
     "format": "prettier --plugin=@prettier/plugin-pug --write \"src/**/*.{pug,scss}\"",
     "lint:styles": "stylelint \"src/**/*.scss\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "npm run lint:styles && npm run lint:format",
+    "lint:format": "prettier --plugin=@prettier/plugin-pug --check \"src/**/*.{pug,scss}\""
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^3.2.0",
