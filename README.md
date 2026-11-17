@@ -1,3 +1,46 @@
+# Keepsake — Digital & Branding Agency
+
+Рефакторинг адаптивного лендінгу **Keepsake** з використанням сучасного фронтенд-стеку: **Vite**, **Pug**, **SCSS (7-1 архітектура)**, **PostCSS (Autoprefixer)** та автоматичної оптимізації зображень.
+
+- **Демо на GitHub Pages:** https://ulianapostevka06.github.io/landing-keepsake-vite/
+
+## Вимоги до середовища та команди
+- **Node.js** >= 20 LTS
+
+\`\`\`bash
+npm install          # встановлення залежностей
+npm run dev          # запуск локального dev-сервера
+npm run build        # продакшн-збірка у папку dist/
+npm run preview      # перегляд зібраного проєкту
+npm run images       # генерація AVIF/WebP/JPEG у 1x та 2x через sharp
+npm run format       # форматування коду (Prettier + Pug)
+npm run lint         # перевірка SCSS (Stylelint) та форматування
+\`\`\`
+
+## Структура проєкту та архітектура
+- `src/layouts/` — базовий Pug-макет (`main.pug`) із блоками `meta`, `title`, `styles`, `content`, `scripts`.
+- `src/pages/` — сторінка `index.pug`, що наслідує макет через `extends` і розширює блоки через `append`/`prepend`.
+- `src/components/` — модульні секції сторінки (`header.pug`, `footer.pug`, `sections/*.pug`), підключені через `include`.
+- `src/mixins/` — перевикористовувані Pug-міксини (`+btn`, `+icon`, `+picture`, `+work-card`, `+section-title`).
+- `src/data/` — дані повторюваних блоків у вигляді масивів об'єктів.
+- `src/styles/` — модульний SCSS (`abstracts/`, `base/`, `layout/`, `components/`, єдина точка входу `main.scss` через `@use` і `@forward`).
+
+## Використані інструменти
+- **Vite + Vituum + @vituum/vite-plugin-pug** — швидка збірка проєкту, dev-сервер та компіляція шаблонів Pug у HTML.
+- **Sass (Dart Sass)** — модульна стилізація, змінні, мапи брейкпоінтів, міксини та функція `rem()`.
+- **PostCSS + Autoprefixer + Browserslist** — автоматичне додавання вендорних префіксів під задані браузери.
+- **Sharp** — автоматична конвертація растрових зображень у сучасні формати AVIF і WebP (плюс запасний JPEG) у двох щільностях (`1x` та `2x`).
+- **Prettier (@prettier/plugin-pug), Stylelint, Husky, lint-staged** — автоматичний контроль якості та форматування коду перед комітом.
+
+## Цільові браузери (Browserslist) та оптимізація
+- **Цільові браузери:** останні 2 версії Chrome, Firefox, Edge, Safari та iOS Safari (`last 2 versions`, `not dead`).
+
+| Ресурс | До оптимізації (вихідний) | Після оптимізації (production) | Економія / результат |
+| :--- | :--- | :--- | :--- |
+| **CSS бандл** | ~24 КБ (немініфікований SCSS/CSS) | ~16.4 КБ (3.61 КБ gzip) | Мініфікація Vite (`esbuild`) + автопрефікси |
+| **Зображення (портфоліо/журнал)** | Оригінали JPEG (~2.8 МБ сумарно) | WebP (~680 КБ) / AVIF (~420 КБ) | Зменшення ваги на **75–85%** + адаптивний `srcset` |
+
+
 # Vite Pug Template
 
 Шаблон для швидкого старту проєктів з використанням **Vite**, **Pug**, та **SCSS**.  
